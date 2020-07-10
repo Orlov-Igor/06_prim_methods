@@ -2,19 +2,25 @@
 
 function padString(originalString, finalLength, symbol, isAfter) {
   let finalString = '';
-  if (finalLength <= originalString.length) {
-    console.log('Длина финальной строки должна быть больше длины изначальной строки');
-  } else {
+  
+  if (finalLength > originalString.length) {
+    let diff = finalLength - originalString.length
+    
     if (isAfter) {
-      finalString = originalString + symbol.repeat(finalLength - originalString.length);
+      finalString = originalString + symbol.repeat(diff);
     } else {
-      finalString = symbol.repeat(finalLength - originalString.length) + originalString; 
-    }  
-  }
+      finalString = symbol.repeat(diff) + originalString; 
+    }
+    
     return finalString;
+  
+  } else {
+    
+    return originalString;
+  };
 };
 
-console.log(padString('Hello', 10, '@', false))
+console.log(padString('Hello', 10, '@', true))
 
 // Задача № 2
 
@@ -57,5 +63,23 @@ function isCharPresent(string, char) {
 
 console.log(isCharPresent('Hello', 'e'));
 
+// Задача № 4
+
+function charIndexOf(string, char) {
+ 
+  for(let i = 0; i <= string.length-1; i++) {
+    if(string.charAt(i) === char) {
+      var index = i;  
+    }
+  }
+   
+  if (index === undefined) {
+     return -1;
+   } else {
+     return index;
+   }    
+}
+
+console.log(charIndexOf('Hello', 'o'));
 
 
